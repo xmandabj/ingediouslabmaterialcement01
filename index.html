@@ -902,7 +902,6 @@ html.rm .rv,html.rm .rv-scale{ opacity:1; transform:none; }
     <nav class="top-nav" aria-label="เมนูหลัก" data-en-aria-label="Main menu">
       <a href="#/" data-nav="courses" data-en="Courses">หลักสูตร</a>
       <a href="#/my" data-nav="my" data-en="My learning">การเรียนของฉัน</a>
-      <a href="#/design" data-nav="design" data-en="Design system">Design system</a>
     </nav>
     <div class="seg lang" role="group" aria-label="เลือกภาษา" data-en-aria-label="Choose language">
       <button type="button" data-lang="th" aria-pressed="true" lang="th">TH</button>
@@ -1581,7 +1580,6 @@ html.rm .rv,html.rm .rv-scale{ opacity:1; transform:none; }
     <span>MATERIAL LAB · POC · <span data-en="Module 01 content from the client’s two Cement lesson PDFs">เนื้อหาโมดูล 01 จาก PDF บทเรียนปูนซีเมนต์ 2 ไฟล์ของผู้ว่าจ้าง</span></span>
     <nav aria-label="ลิงก์ท้ายหน้า" data-en-aria-label="Footer links">
       <a href="#/" data-en="Courses">หลักสูตร</a>
-      <a href="#/design" data-en="Design system">Design system</a>
       <a href="#/notes" data-en="POC notes &amp; review">บันทึก POC และการตรวจทาน</a>
     </nav>
   </div>
@@ -2142,7 +2140,6 @@ function parseHash(){
   var h = (location.hash||'#/').replace(/^#/, '');
   var p = h.split('/').filter(Boolean);
   if(p[0]==='m'){ return { page:'module', id:p[1]||'01', tab:(['learn','lab','quiz'].indexOf(p[2])>=0 ? p[2] : 'learn') }; }
-  if(p[0]==='design') return { page:'design' };
   if(p[0]==='notes') return { page:'notes' };
   if(p[0]==='my') return { page:'catalogue', mine:true };
   return { page:'catalogue' };
