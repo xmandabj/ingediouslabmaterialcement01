@@ -2,7 +2,8 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
-<meta name="version" content="0.2">
+<meta name="version" content="0.3">
+<meta name="ml-feedback-endpoint" content="">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Material Lab · Cement</title>
 <meta name="description" content="MATERIAL LAB — bilingual interactive learning POC. Module 01: Cement · Module 02: Raw mix &amp; clinker · Module 03: Clinker quality.">
@@ -786,7 +787,7 @@ html[lang="th"] .mcard strong{ letter-spacing:0; text-transform:none; font-size:
 .res-list .rl .grow{ flex:1; }
 
 /* =========================================================
-   Design system + notes pages
+   Design system page
    ========================================================= */
 .ds-sec{ padding:48px 0; border-top:1px solid var(--hair); }
 .ds-sec > h2{ font-size:28px; margin-bottom:6px; }
@@ -810,13 +811,6 @@ html[lang="th"] .mcard strong{ letter-spacing:0; text-transform:none; font-size:
 .radius-demo div{ width:110px; height:80px; background:var(--surface); border:1px solid var(--border); display:grid; place-items:center; font-size:13px; color:var(--text-2); }
 .states-demo .btn.hov{ background:var(--action-hover); }
 .states-demo .btn.foc{ outline:2px solid var(--action); outline-offset:3px; }
-.notes h2{ font-size:26px; margin:40px 0 12px; }
-.notes h3{ font-size:19px; margin:24px 0 8px; }
-.notes ul{ padding-left:22px; margin:0; display:grid; gap:8px; }
-.notes li{ line-height:1.65; }
-.notes table{ width:100%; border-collapse:collapse; font-size:15px; margin:8px 0; }
-.notes th,.notes td{ text-align:left; padding:10px 12px; border-bottom:1px solid var(--hair); vertical-align:top; }
-.notes th{ font-size:13px; color:var(--text-2); font-weight:600; letter-spacing:.04em; }
 .st{ display:inline-flex; height:24px; align-items:center; padding:0 9px; border-radius:999px; font-size:12px; font-weight:700; white-space:nowrap; }
 .st.real{ background:var(--success-bg); color:var(--success); }
 .st.img{ background:var(--action-bg); color:var(--action); }
@@ -1753,6 +1747,66 @@ html[lang="th"] .m3-fk{ letter-spacing:.02em; }
 @media (prefers-reduced-motion:reduce){ .m3-seg,.m3-unit,.m3-timeline i,.m3-chain > div{ transition:none; } }
 .m3-pcard-b .m3-chip{ align-self:flex-start; }
 .m3-role img{ max-height:150px; }
+
+/* ===== IGFB · แจ้งแก้ไขภาพ (infographic correction) ===== */
+.igfb-btn{ position:absolute; z-index:6; width:32px; height:32px; padding:0; display:grid; place-items:center; border-radius:50%; border:1px solid var(--hair); background:rgba(255,255,255,.94); color:var(--text-2); box-shadow:var(--shadow-1); cursor:pointer; pointer-events:auto; -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); transition:color var(--t-fb),background var(--t-fb),border-color var(--t-fb),box-shadow var(--t-fb); }
+.igfb-btn[hidden]{ display:none; }
+.igfb-btn::before{ content:""; position:absolute; inset:-6px; border-radius:50%; }
+.igfb-btn svg{ width:16px; height:16px; }
+.igfb-btn:hover,.igfb-btn:focus-visible{ color:var(--action); background:#fff; border-color:#BCD6F2; box-shadow:0 2px 10px rgba(0,102,204,.18); }
+.igfb-btn:focus-visible{ outline:2px solid var(--action); outline-offset:3px; border-radius:50%; }
+.igfb-tip{ position:absolute; right:calc(100% + 8px); top:50%; transform:translate(4px,-50%); white-space:nowrap; background:var(--text); color:#fff; font-size:12.5px; font-weight:600; line-height:1.3; padding:5px 10px; border-radius:8px; opacity:0; pointer-events:none; transition:opacity var(--t-fb),transform var(--t-fb); }
+.igfb-btn:hover .igfb-tip,.igfb-btn:focus-visible .igfb-tip{ opacity:1; transform:translate(0,-50%); }
+@media (hover:none){ .igfb-btn:hover .igfb-tip{ opacity:0; } }
+
+dialog.igfb-dlg{ width:min(520px,calc(100vw - 24px)); max-width:min(520px,calc(100vw - 24px)); max-height:calc(100vh - 24px); max-height:calc(100dvh - 24px); overflow:auto; }
+.igfb-body{ padding:20px 24px 22px; display:grid; gap:12px; margin:0; }
+.igfb-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+.igfb-kicker{ display:block; font-size:12.5px; font-weight:600; letter-spacing:.04em; color:var(--text-2); }
+.igfb-head h2{ margin:2px 0 0; font-size:22px; line-height:1.35; font-weight:600; }
+.igfb-x{ flex:none; }
+.igfb-x svg{ width:18px; height:18px; }
+.igfb-form{ display:grid; gap:12px; }
+.igfb-form[hidden],.igfb-done[hidden]{ display:none; }
+.igfb-prev{ margin:0; border-radius:14px; background:var(--surface); border:1px solid var(--hair); height:150px; display:grid; place-items:center; overflow:hidden; }
+.igfb-prev img{ max-width:100%; max-height:100%; object-fit:contain; mix-blend-mode:multiply; }
+.igfb-ctx{ margin:0; display:grid; gap:4px; font-size:15px; }
+.igfb-ctx > div{ display:grid; grid-template-columns:64px 1fr; gap:8px; align-items:baseline; }
+.igfb-ctx dt{ color:var(--text-2); font-size:13.5px; }
+.igfb-ctx dd{ margin:0; font-weight:600; line-height:1.45; }
+.igfb-field{ display:grid; gap:6px; }
+.igfb-lbl{ font-size:15.5px; font-weight:600; }
+.igfb-lbl small{ font-weight:400; color:var(--text-2); font-size:13.5px; }
+.igfb-req{ color:var(--retry); }
+.igfb-field textarea{ width:100%; border-radius:12px; border:1px solid var(--border); padding:10px 12px; font-size:16px; line-height:1.55; resize:vertical; min-height:72px; background:#fff; }
+.igfb-field textarea:focus{ border-color:var(--action); box-shadow:0 0 0 4px rgba(0,102,204,.12); outline:none; }
+.igfb-field textarea[aria-invalid="true"]{ border-color:var(--retry); box-shadow:0 0 0 4px rgba(201,54,54,.1); }
+.igfb-field textarea[readonly]{ background:var(--surface); }
+.igfb-err{ font-size:14px; color:var(--retry); min-height:0; }
+.igfb-err:empty{ display:none; }
+.igfb-auto{ margin:0; display:flex; gap:8px; align-items:flex-start; font-size:13px; line-height:1.55; color:var(--text-2); }
+.igfb-auto svg,.igfb-status svg{ flex:none; width:16px; height:16px; margin-top:2px; }
+.igfb-status{ display:flex; gap:8px; align-items:flex-start; font-size:14.5px; line-height:1.55; }
+.igfb-status:empty{ display:none; }
+.igfb-status.info{ padding:10px 12px; border-radius:12px; background:var(--action-bg); color:var(--text); }
+.igfb-status.info svg{ color:var(--action); }
+.igfb-status.err{ padding:10px 12px; border-radius:12px; background:var(--retry-bg); color:var(--text); }
+.igfb-status.err svg{ color:var(--retry); }
+.igfb-actions{ display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+.igfb-spin{ display:none; width:16px; height:16px; border-radius:50%; border:2px solid rgba(255,255,255,.45); border-top-color:#fff; animation:igfbspin .8s linear infinite; }
+.igfb-dlg.is-sending .igfb-spin{ display:inline-block; }
+.igfb-dlg.is-sending .btn-primary[disabled]{ background:var(--action); color:#fff; opacity:.8; cursor:progress; }
+@keyframes igfbspin{ to{ transform:rotate(360deg); } }
+@media (prefers-reduced-motion:reduce){ .igfb-spin{ animation:none; } .igfb-btn,.igfb-tip{ transition:none; } }
+.igfb-done{ display:grid; justify-items:center; gap:14px; text-align:center; padding:18px 4px 6px; }
+.igfb-done-ic{ width:52px; height:52px; border-radius:50%; background:var(--success); color:#fff; display:grid; place-items:center; }
+.igfb-done-ic svg{ width:26px; height:26px; }
+.igfb-done p{ margin:0; font-size:18px; line-height:1.55; font-weight:600; max-width:30ch; }
+@media (max-width:520px){
+  .igfb-body{ padding:18px 16px 18px; }
+  .igfb-prev{ height:140px; }
+  .igfb-actions .btn{ flex:1 1 auto; }
+}
 </style>
 </head>
 <body>
@@ -1766,6 +1820,7 @@ html[lang="th"] .m3-fk{ letter-spacing:.02em; }
     <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v6M12 7.5v.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-comment" viewBox="0 0 24 24"><path d="M5.5 4.5h13a2 2 0 0 1 2 2V15a2 2 0 0 1-2 2H11l-4.5 3.5V17h-1a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 9.2h8M8 12.6h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-warn" viewBox="0 0 24 24"><path d="M12 3.5L2.8 19.5h18.4L12 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 10v4.5M12 17v.3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
     <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M3 12c0-2.5 4-4.5 9-4.5s9 2 9 4.5-4 4.5-9 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 14l-2.2 2.5L14 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 3v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
@@ -3644,9 +3699,6 @@ html[lang="th"] .m3-fk{ letter-spacing:.02em; }
 <!-- =====================================================================
      POC NOTES
      ===================================================================== -->
-<section class="page" id="page-notes" data-page="notes" hidden>
-  <div class="wrap-narrow notes" id="notes-root" style="padding-top:56px;padding-bottom:96px"></div>
-</section>
 
 </main>
 
@@ -4396,7 +4448,6 @@ function parseHash(){
   var h = (location.hash||'#/').replace(/^#/, '');
   var p = h.split('/').filter(Boolean);
   if(p[0]==='m'){ var tb = (['learn','lab','quiz'].indexOf(p[2])>=0 ? p[2] : 'learn'); if(p[1]==='02') return { page:'m02', id:'02', tab:tb }; if(p[1]==='03') return { page:'m03', id:'03', tab:tb }; return { page:'module', id:p[1]||'01', tab:tb }; }
-  if(p[0]==='notes') return { page:'notes' };
   if(p[0]==='my') return { page:'catalogue', mine:true };
   return { page:'catalogue' };
 }
@@ -4414,11 +4465,10 @@ function show(r){
   document.body.dataset.page = r.page;
   route.page = r.page;
   if(r.page==='catalogue'){ initCatalogue(); setStatusFilter(r.mine ? 'mine' : (catState.status==='mine' ? 'all' : catState.status)); restoreScroll('catalogue', samePage); }
-  if(r.page==='notes'){ initNotes(); window.scrollTo(0,0); }
   if(r.page==='module'){ store.set('lastMod','01'); document.title = L('Material Lab · ปูนซีเมนต์', 'Material Lab · Cement'); initModule(); setTab(r.tab); }
   if(r.page==='m02'){ store.set('lastMod','02'); M02.show(r.tab); }
   if(r.page==='m03'){ store.set('lastMod','03'); M03.show(r.tab); }
-  if(r.page==='catalogue' || r.page==='notes') document.title = L('Material Lab · ปูนซีเมนต์', 'Material Lab · Cement');
+  if(r.page==='catalogue') document.title = L('Material Lab · ปูนซีเมนต์', 'Material Lab · Cement');
   syncBars();
 }
 function restoreScroll(key, same){ if(same) return; var y = scrollMem[key]||0; requestAnimationFrame(function(){ window.scrollTo(0, y); }); }
@@ -6594,47 +6644,7 @@ function renderResults(st){
   $('#m2q-restart').addEventListener('click', function(){ qz = { res:QB.map(function(){ return null; }), ans:{} }; saveQuiz(); qGo(0); });
 }
 
-/* =========================================================
-   POC notes (appended to the notes page)
-   ========================================================= */
-function notesHtml(){
-  function stt(k){ var m = { real:['ทำงานจริง','Working'], img:['ภาพนิ่ง + interaction','Image-based'], mock:['ข้อมูลตัวอย่าง','Mock data'] }[k]; return '<span class="st '+k+'">'+T(m[0], m[1])+'</span>'; }
-  function row(a, s, n){ return '<tr><td>'+T(a[0], a[1])+'</td><td>'+stt(s)+'</td><td class="t-2">'+T(n[0], n[1])+'</td></tr>'; }
-  function li(arr){ return arr.map(function(s){ return '<li>'+T(s[0], s[1])+'</li>'; }).join(''); }
-  return '<h2 style="margin-top:72px;padding-top:32px;border-top:1px solid var(--hair)">'+T('โมดูล 02 · วัตถุดิบผสมและปูนเม็ด','Module 02 · Raw mix &amp; clinker')+'</h2>'
-  + '<p class="t-2">'+T('เนื้อหาจาก PowerPoint “02 Raw Mix — photo concept” 21 สไลด์ และ kit ของโมดูล 02 · ไม่ได้ deploy ขึ้นเว็บจริง','Content from the 21-slide “02 Raw Mix — photo concept” PowerPoint and the Module 02 kit · not deployed to the live site.')+'</p>'
-  + '<h3>'+T('สถานะการทำงาน','Implementation status')+'</h3><table><thead><tr><th>'+T('ส่วน','Feature')+'</th><th>'+T('สถานะ','Status')+'</th><th>'+T('หมายเหตุ','Notes')+'</th></tr></thead><tbody>'
-  + row(['สายการเผา 3D (hero + สำรวจ 4 สถานี มุมมอง ผ่าเตา)','3D kiln line (hero + 4-station explorer, views, cutaway)'],'real',['WebGL จริง เรขาคณิตแบบย่อสร้างในโค้ด ไม่ใช่โมเดล GLB ระดับ production · มีรายการสถานีสำหรับคีย์บอร์ด','Real WebGL, simplified procedural geometry — not a production GLB · keyboard station list'])
-  + row(['ตัวอย่างปูนเม็ด 3D (หมุน ซูม รีเซ็ต)','3D clinker specimen (orbit, zoom, reset)'],'real',['รูปทรงเชิงแนวคิดสร้างจาก noise พร้อมภาพอ้างอิง 4 มุม','Conceptual noise-based shape with the 4-view references'])
-  + row(['ประกอบแร่ด้วยบล็อก 3D (C S A F)','3D oxide-unit builder (C S A F)'],'real',['นับบล็อกและคำนวณมวลโมลาร์จริง · บล็อกเป็นหน่วยเชิงสัญลักษณ์','Counts blocks and computes real molar masses · symbolic units'])
-  + row(['แคลไซน์ตามการเลื่อน + สมดุลมวล','Scroll-driven calcining + mass balance'],'img',['ภาพเชิงแนวคิด แต่สมการและตัวเลข (100 = 56 + 44) เป็นข้อความจริง','Conceptual images; the equation and numbers are live text'])
-  + row(['จุดตรวจอุณหภูมิ 4 จุด','Four temperature checkpoints'],'img',['ภาพ 4 ช่วงเชิงแนวคิด · อุณหภูมิตามต้นฉบับ รอผู้เชี่ยวชาญตรวจ','Four conceptual images · source temperatures pending review'])
-  + row(['ห้องทดลอง 4 การทดลอง','Four labs'],'real',['คำนวณด้วยสูตรเดียวกับ calculations.mjs · ห้องปรับสูตรเป็นแบบจำลองเชิงแนวคิด','Same formulas as calculations.mjs · the recipe lab is a conceptual model'])
-  + row(['กรณีศึกษา Q1–Q6 + วิธีคำนวณ 2 แบบ','Case study Q1–Q6 + two calculation modes'],'real',['tolerance ตาม quiz bank · เก็บคำตอบไว้ในเบราว์เซอร์','Tolerances from the quiz bank · answers saved in the browser'])
-  + row(['แบบทดสอบ 20 ข้อ','20-question quiz'],'real',['เลือกหลายข้อ / ข้อเดียว / จับคู่ / ตัวเลข พร้อมคำอธิบายและลิงก์ทบทวน','Multi / single / matching / numeric with explanations and review links'])
-  + row(['กราฟโดนัทและสมดุลมวล','Doughnut and mass-balance charts'],'real',['สร้างจากตัวเลขกรณีศึกษาโดยตรง','Drawn directly from the case-study numbers'])
-  + '</tbody></table>'
-  + '<h3>'+T('ต้องจัดเตรียมเพิ่ม (โมดูล 02)','Still needed (Module 02)')+'</h3><ul>'+li([
-      ['โมเดล GLB/GLTF ของหอ preheater เตาเผาหมุน cooler และก้อนปูนเม็ด แทนเรขาคณิตในโค้ด','GLB/GLTF models of the preheater, kiln, cooler and a clinker nodule to replace procedural geometry'],
-      ['ภาพถ่ายจริงจากโรงงานของผู้ว่าจ้าง แทนภาพ Wikimedia (ต้นฉบับแนะนำภาพโรงงาน SCCC) และตรวจสัญญาอนุญาตทุกภาพก่อนเผยแพร่','Real photos of the client’s plant to replace the Wikimedia images (the source suggests SCCC plant photos); check every licence before release'],
-      ['ให้ผู้เชี่ยวชาญตรวจศัพท์ภาษาไทยและจุดตรวจอุณหภูมิ','Expert review of Thai terminology and the temperature checkpoints']])+'</ul>'
-  + '<h3>'+T('บันทึกตรวจทานวิชาการ (โมดูล 02)','Scientific review notes (Module 02)')+'</h3><ul>'+li([
-      ['C/S/A/F คือออกไซด์ ไม่ใช่ธาตุ · CaCO₃ แยกจาก C (CaO) จนกว่าจะแคลไซน์ · ใช้ “4 องค์ประกอบ (ออกไซด์)” แทน “4 ธาตุ” ในต้นฉบับ','C/S/A/F are oxides, not elements · CaCO₃ is kept separate from C (CaO) until calcining · “4 constituents (oxides)” replaces the source’s “4 elements”'],
-      ['ตัวอย่าง CO₂: 1,620 × 0.44 = 712.8 กก. (ต้นฉบับพิมพ์ 712) และ 35.64%','CO₂ example: 1,620 × 0.44 = 712.8 kg (source printed 712) and 35.64%'],
-      ['LOI = เปอร์เซ็นต์มวลที่สูญเสียหลังให้ความร้อน ไม่ใช่ชื่อก๊าซ · ปรับถ้อยคำ “ลอยไปเป็นควัน” ให้แม่นยำ','LOI = percentage mass lost on ignition, not a gas name · “goes up as smoke” reworded precisely'],
-      ['ตัวเลือก “Decarbonization” ถูกนำออกจากแบบฝึก เพราะเป็นคำที่เกี่ยวข้องกับการแคลไซน์ ไม่ควรตัดสินว่าผิด','“Decarbonization” was removed from the choices because it describes calcining and should not be graded wrong'],
-      ['อุณหภูมิ 820–900 / 1,260 / 1,338 / 1,420 / 1,450 °C เป็นจุดตรวจเชิงการสอน ไม่ใช่เกณฑ์ตายตัว (ต้นฉบับแก้ 1,340 → 1,338)','820–900 / 1,260 / 1,338 / 1,420 / 1,450 °C are teaching checkpoints, not fixed thresholds (source corrected 1,340 → 1,338)'],
-      ['ใช้ชื่อ Aluminate และ Ferrite แทน “celite” และ “felite” ในต้นฉบับ (คงไว้เป็นหมายเหตุ) · C₄AF เป็นสูตรตัวแทนเชิงอุดมคติ','Aluminate and ferrite replace the source’s “celite” and “felite” (kept as notes) · C₄AF is an idealised end-member'],
-      ['กรณีศึกษาแสดงสองวิธี: ค่าปัดเศษตามบท (3,692 / 1,292 / 1.538333 / 34.99%) และห่วงโซ่ละเอียด (3,691.71 / 1,291.71 / 1.538214 / 34.99%)','Case study shows both paths: rounded case (3,692 / 1,292 / 1.538333 / 34.99%) and exact chain (3,691.71 / 1,291.71 / 1.538214 / 34.99%)'],
-      ['ปริมาตรก๊าซ: 27,410 × 638/273 = 64,057 m³/h (ใช้ 273.15 K ได้ ≈ 64,037) · m³/h ที่อุณหภูมิจริงแยกจาก Nm³/h','Gas volume: 27,410 × 638/273 = 64,057 m³/h (≈ 64,037 with 273.15 K) · actual m³/h kept separate from Nm³/h'],
-      ['raw mix “inert” ปรับเป็น “ยังไม่มีสมบัติยึดประสานแบบไฮดรอลิกเหมือนปูน” · ไม่มีแบบจำลองทำนายแร่หรือกำลังอัดจากสูตร','Raw mix “inert” reworded to “does not bind hydraulically like cement” · no model predicts phases or strength from the recipe'],
-      ['ภาพผ่าเม็ด ภาพ 4 มุม และภาพ 4 ช่วงอุณหภูมิเป็นภาพเชิงแนวคิด ไม่ใช่ภาพจุลทรรศน์ ผลวัด หรือการจำลอง','The cut nodule, 4-view and 4-checkpoint images are conceptual — not microscopy, measurements or simulations']])+'</ul>'
-  + '<h3>'+T('แผนผังสไลด์ → เว็บ (โมดูล 02)','Slide → site mapping (Module 02)')+'</h3><table><thead><tr><th>'+T('สไลด์','Slide')+'</th><th>'+T('หัวข้อ','Topic')+'</th><th>'+T('อยู่ที่','On the site')+'</th></tr></thead><tbody>'
-  + [['1','ปก + 4 คำถาม','Cover + 4 questions','เรียน › เริ่มต้น + สายการเผา 3D','Learn › Start + 3D kiln line'],['2–5','วัตถุดิบ ปรับสูตร raw mix ชวเลข','Raw materials, correction, raw mix, notation','เรียน › บทที่ 01 · แบบทดสอบข้อ 1–3 · Lab ปรับสูตร','Learn › chapter 01 · Quiz Q1–3 · recipe lab'],['6–7','2 ขั้นหลักของการเผา','Two burning stages','เรียน › บทที่ 02 · แบบทดสอบข้อ 4','Learn › chapter 02 · Quiz Q4'],['8','แคลไซน์ 820–900 °C','Calcining 820–900 °C','เรียน › บทที่ 02 (เลื่อน) · Lab แคลไซน์ · ข้อ 5','Learn › chapter 02 (scroll) · calcining lab · Q5'],['9–10','LOI','LOI','เรียน › บทที่ 02 · ข้อ 7–8','Learn › chapter 02 · Q7–8'],['11','CO₂ จากการแคลไซน์','CO₂ from calcining','เรียน › บทที่ 02 · ข้อ 6','Learn › chapter 02 · Q6'],['12','เกิดปูนเม็ด','Clinkering','เรียน › บทที่ 02 จุดตรวจอุณหภูมิ','Learn › chapter 02 checkpoints'],['13–16','4 แร่ มวลโมลาร์ ตัวประสาน','Four minerals, molar mass, binder','เรียน › บทที่ 03 · Lab ประกอบแร่ · ข้อ 9–13','Learn › chapter 03 · mineral lab · Q9–13'],['17–19','กรณีศึกษาโรงงาน','Plant case study','เรียน › บทที่ 04 · Lab ก๊าซร้อน · ข้อ 14–20','Learn › chapter 04 · hot-gas lab · Q14–20'],['20','สรุป','In short','เรียน › สรุป','Learn › In short'],['21','เครดิตภาพ','Photo credits','เครดิตแสดงใต้ภาพถ่ายแต่ละภาพ','Shown under each photo']].map(function(r){ return '<tr><td class="num">'+r[0]+'</td><td>'+T(r[1], r[2])+'</td><td class="t-2">'+T(r[3], r[4])+'</td></tr>'; }).join('')
-  + '</tbody></table>';
-}
-
-return { show:enter, status:status, pct:pct, info:info, onScroll:onScroll2, notesHtml:notesHtml, goto:goto,
+return { show:enter, status:status, pct:pct, info:info, onScroll:onScroll2, goto:goto,
   resume:function(){ var id = p2.last; scrollMem['m02-learn'] = 0; location.hash = '#/m/02/learn'; if(id && id!=='m2-hero') setTimeout(function(){ goto(id); }, 220); },
   _calc:{ molarMass:molarMass, calcine:calcine, lossOnIgnition:lossOnIgnition, gasVol:gasVol, plantCase:plantCase, within:within, parseNum:parseNum } };
 })();
@@ -7522,92 +7532,273 @@ function renderResults(st){
   $('#m3q-restart').addEventListener('click', function(){ qz = { res:QB.map(function(){ return null; }), ans:{} }; saveQuiz(); qGo(0); });
 }
 
-/* =========================================================
-   POC notes (appended to the notes page)
-   ========================================================= */
-function notesHtml(){
-  function stt(k){ var m = { real:['ทำงานจริง','Working'], img:['ภาพนิ่ง + interaction','Image-based'], mock:['ข้อมูลตัวอย่าง','Mock data'] }[k]; return '<span class="st '+k+'">'+T(m[0], m[1])+'</span>'; }
-  function row(a, s, n){ return '<tr><td>'+T(a[0], a[1])+'</td><td>'+stt(s)+'</td><td class="t-2">'+T(n[0], n[1])+'</td></tr>'; }
-  function li(arr){ return arr.map(function(s){ return '<li>'+T(s[0], s[1])+'</li>'; }).join(''); }
-  return '<h2 style="margin-top:72px;padding-top:32px;border-top:1px solid var(--hair)">'+T('โมดูล 03 · คุณภาพปูนเม็ด','Module 03 · Clinker quality')+'</h2>'
-  + '<p class="t-2">'+T('เนื้อหาจาก PowerPoint “03 Clinker Quality — photo concept” 25 สไลด์ และ kit ของโมดูล 03 (แก้ตาม scientific-review) · ไม่ได้ deploy ขึ้นเว็บจริง','Content from the 25-slide “03 Clinker Quality — photo concept” PowerPoint and the Module 03 kit (corrected per the scientific review) · not deployed to the live site.')+'</p>'
-  + '<h3>'+T('สถานะการทำงาน','Implementation status')+'</h3><table><thead><tr><th>'+T('ส่วน','Feature')+'</th><th>'+T('สถานะ','Status')+'</th><th>'+T('หมายเหตุ','Notes')+'</th></tr></thead><tbody>'
-  + row(['ปูนเม็ดผ่าครึ่ง 3D + เลือก 4 แร่ (hotspot)','3D half-cut clinker + 4-phase hotspots'],'real',['WebGL จริง ใช้ geometry จาก clinker-cutaway-schematic (5 named meshes) · schematic เริ่มต้น พื้นที่สีไม่ใช่สัดส่วนมวล · มีปุ่มเทียบกับภาพเรนเดอร์','Real WebGL using the clinker-cutaway-schematic geometry (5 named meshes) · schematic starter; colour areas ≠ mass % · render comparison toggle'])
-  + row(['กราฟกำลัง 4 แร่ (เลื่อนอายุ เปิด/ปิด ซูม ปักหมุด ตาราง)','Four-phase strength explorer (age, toggles, zoom, pin, table)'],'real',['SVG จากข้อมูล native chart ของ PPTX (สไลด์ 19) · interpolation เชิงเส้นเฉพาะเคอร์เซอร์ ไม่ extrapolate · ชุดซูมสไลด์ 9 แยกต่างหาก','SVG from the PPTX native chart data (slide 19) · linear interpolation for the cursor only, no extrapolation · slide 9 zoom kept separate'])
-  + row(['ห้องทดลองการก่อตัว','Setting lab'],'real',['แบบจำลองเชิงคุณภาพ 3 กรณี เทียบปูนอ้างอิง · ไม่มีเวลาเป็นนาที','Qualitative model, 3 cases vs a baseline · no minutes'])
-  + row(['ห้องทดลองการเผาและทำให้เย็น','Burning & cooling lab'],'img',['สลับภาพเชิงแนวคิดตามสถานการณ์ + ผลเชิงทิศทาง · ไม่มีตัวเลขพลังงาน/กำลัง','Conceptual images per scenario + directional results · no energy/strength numbers'])
-  + row(['ห้องทดลองออกแบบปูนเม็ด','Clinker design lab'],'real',['รวม 100% เสมอด้วย Others · clamp เมื่อ Others หมด · ตัวอย่างต้นฉบับ 3 ชุดไม่ normalise · ไม่ขึ้นป้ายผ่านมาตรฐาน','Always 100% via Others · clamps when Others is 0 · the 3 source examples are not normalised · no compliance label'])
-  + row(['C₂S → C₃S หน่วยสัญลักษณ์ (เล่น/หยุด/ทีละขั้น + 4 เงื่อนไข)','C₂S → C₃S symbolic units (play/pause/step + 4 conditions)'],'real',['หน่วยสัญลักษณ์ ไม่ใช่การจำลองจลนศาสตร์','Symbolic units, not a kinetic simulation'])
-  + row(['แบบทดสอบ 24 ข้อ (quiz-bank)','24-question quiz (quiz bank)'],'real',['ข้อเดียว/หลายข้อ/ตัวเลข/จับคู่ · โหมดฝึก ตอบซ้ำได้ · ไม่ตั้งเกณฑ์ผ่านเอง','Single/multi/numeric/matching · practice mode with retries · no invented pass mark'])
-  + '</tbody></table>'
-  + '<h3>'+T('ต้องจัดเตรียมเพิ่ม (โมดูล 03)','Still needed (Module 03)')+'</h3><ul>'+li([
-      ['พัฒนาโมเดลปูนเม็ด 3D ให้ผิวละเอียดใกล้ภาพเรนเดอร์ และโมเดลเตา/ฉากไฮเดรชันเพิ่ม (ตอนนี้ฉากเหล่านั้นเป็นภาพนิ่งเชิงแนวคิด)','Refine the 3D clinker toward the render, and add kiln/hydration 3D scenes (those are conceptual stills for now)'],
-      ['ข้อมูล kinetics/calibration หากต้องการจำลองเวลาก่อตัวเชิงปริมาณ','Kinetic/calibration data if a quantitative setting simulation is wanted'],
-      ['ภาพถ่ายจริงของโรงงานผู้ว่าจ้างแทนภาพ Wikimedia (ต้นฉบับแนะนำภาพโรงงาน SCCC) และตรวจสัญญาอนุญาตก่อนเผยแพร่','Client plant photos to replace the Wikimedia images (the source suggests SCCC); verify licences before release'],
-      ['ผู้สอนตรวจถ้อยคำ quiz/feedback และกำหนดเกณฑ์ assessment (แนะนำคัด 12 ข้อ)','Instructor review of quiz/feedback wording and the assessment rules (12 questions suggested)']])+'</ul>'
-  + '<h3>'+T('บันทึกตรวจทานวิชาการ (โมดูล 03)','Scientific review notes (Module 03)')+'</h3><ul>'+li([
-      ['การก่อตัวกับกำลังเป็นคนละคุณสมบัติ · 28 วันเป็นอายุทดสอบ ไม่ใช่วันที่ไฮเดรชันหยุด','Setting and strength are different properties · 28 days is a test age, not when hydration stops'],
-      ['C₃A “water hungry” เป็นคำอุปมา — ใช้ “ทำปฏิกิริยาเร็วมากหากไม่มี sulfate ควบคุม” · ไม่สอนสมการเดิมที่รวม free lime กับยิปซัม (ยิปซัม = แคลเซียมซัลเฟต)','C₃A “water hungry” is a metaphor — taught as “reacts very fast unless sulfate controls it” · the source equation mixing free lime and gypsum is not taught (gypsum = calcium sulfate)'],
-      ['ยิปซัมช่วยควบคุมในช่วงที่เหมาะสม ไม่ใช่ “เติมมากแล้วช้าลงเสมอ” · raw mix ละเอียดขึ้นมีผลทางอ้อม ไม่ใช่ “ไม่มีผลเลย”','Gypsum controls setting within a suitable range, not “more is always slower” · a finer raw mix acts indirectly, not “no effect at all”'],
-      ['ใช้สมการคำ “แคลเซียมซิลิเกต + น้ำ → C–S–H + portlandite + ความร้อน” · portlandite ไม่ใช่สิ่งเลวร้ายทั้งหมด','Word equation “calcium silicates + water → C–S–H + portlandite + heat” · portlandite is not simply “bad”'],
-      ['กราฟ 48/70 MPa เป็นกราฟสอนโดยประมาณ ไม่ใช่ผลทดสอบ · ไม่คำนวณกำลังผสมจากเส้น · ชุดซูมสไลด์ 9 ไม่ตรงกับกราฟยาวทุกจุด จึงแยกไว้','48/70 MPa come from approximate teaching curves, not tests · no blended strength is computed · the slide 9 zoom differs from the long curves, so it is kept separate'],
-      ['C₄AF: บทบาท flux และมีส่วนต่อกำลังน้อยกว่า silicate โดยทั่วไป — ไม่ใช่ “ไม่มีคุณสมบัติไฮดรอลิก”','C₄AF: flux role and usually a smaller strength contribution — not “no hydraulic properties”'],
-      ['1,420/1,450 °C, 1,600–1,700 °C และ CSA Type 10/30/50 เป็นบริบทของสื่อ ไม่ใช่สูตรควบคุมเตาหรือมาตรฐานปัจจุบัน','1,420/1,450 °C, 1,600–1,700 °C and CSA Types 10/30/50 are source context, not an operating recipe or a current standard'],
-      ['ตัวอย่างองค์ประกอบคงค่าตามต้นฉบับ (60/16/10/10 + 4 · 61/16/6/12.5 + 4.5 · 60/24/3.5/8 + 4.5) · ตัวอย่าง 2 มี C₃A 3.5 จึงไม่ใช่ “C₃A เท่าเดิม” · C₃A < 8% หรือ 6% ไม่ใช่การรับรองการทนซัลเฟต','Composition examples kept as in the source (60/16/10/10 + 4 · 61/16/6/12.5 + 4.5 · 60/24/3.5/8 + 4.5) · example 2 has C₃A 3.5, so not “C₃A unchanged” · C₃A < 8% or 6% is not a sulfate-resistance certification'],
-      ['แก้ “วัดแร่โดยตรงไม่ได้” เป็น: XRF วัดออกไซด์รวม · Bogue ประมาณ potential phases · QXRD/Rietveld ประเมินแร่โดยตรงได้','“You can’t measure the minerals directly” corrected: XRF measures bulk oxides · Bogue estimates potential phases · QXRD/Rietveld assesses phases directly'],
-      ['ระบุ “ซัลเฟอร์ (sulfur/SO₃)” จากเชื้อเพลิงให้ชัด ไม่ปนกับ S = SiO₂','Fuel “sulfur (SO₃)” is named in full so it is not confused with S = SiO₂']])+'</ul>';
-}
-
-return { show:enter, status:status, pct:pct, info:info, onScroll:onScroll3, notesHtml:notesHtml, goto:goto,
+return { show:enter, status:status, pct:pct, info:info, onScroll:onScroll3, goto:goto,
   resume:function(){ var id = p3.last; scrollMem['m03-learn'] = 0; location.hash = '#/m/03/learn'; if(id && id!=='m3-hero') setTimeout(function(){ goto(id); }, 220); },
   _calc:{ interp:interp, withRemainder:withRemainder, setUsingOthers:setUsingOthers, within:within, parseNum:parseNum } };
 })();
 
+/* =========================================================
+   IGFB — “แจ้งแก้ไขภาพ / Suggest a correction” for lesson infographics (Modules 01–03, Learn tab)
 
-/* ======================= NOTES ======================= */
-var notesInited = false;
-function initNotes(){
-  if(notesInited) return; notesInited = true;
-  function st(k){ var m = { real:['ทำงานจริง','Working'], img:['ภาพนิ่ง + interaction','Image-based'], mock:['ข้อมูลตัวอย่าง','Mock data'], todo:['ต้องทำเพิ่ม','To do'] }[k]; return '<span class="st '+k+'">'+T(m[0], m[1])+'</span>'; }
-  function row(a, s, n){ return '<tr><td>'+T(a[0], a[1])+'</td><td>'+st(s)+'</td><td class="t-2">'+T(n[0], n[1])+'</td></tr>'; }
-  var html = '<div class="eyebrow">MATERIAL LAB · POC</div><h1 class="t-heading" style="margin-top:8px">'+T('บันทึก POC และการตรวจทาน','POC notes & review')+'</h1>'
-  + '<p class="lead" style="margin-top:8px">'+T('สิ่งที่ทำงานจริงแล้ว สิ่งที่เป็นภาพหรือข้อมูลตัวอย่าง และประเด็นวิชาการที่ต้องให้ผู้เชี่ยวชาญตรวจก่อนเผยแพร่','What works today, what is image-based or sample data, and the scientific points a subject-matter expert should check before release.')+'</p>'
-  + '<h2>'+T('สถานะการทำงาน','Implementation status')+'</h2><table><thead><tr><th>'+T('ส่วน','Feature')+'</th><th>'+T('สถานะ','Status')+'</th><th>'+T('หมายเหตุ','Notes')+'</th></tr></thead><tbody>'
-    + row(['หน้ารวมหลักสูตร 98 โมดูล ค้นหา ตัวกรอง ความคืบหน้า','98-module catalogue, search, filters, progress'],'real',['โมดูล 04–98 แสดงเป็น “Coming soon” (ยังไม่ใส่ชื่อ) · หมวดหมู่เป็นโครงร่างชั่วคราว · ความคืบหน้าเก็บในเบราว์เซอร์นี้เท่านั้น (ยังไม่มีระบบบัญชีผู้ใช้)','Modules 04–98 show as “Coming soon” (no titles yet) · categories are a provisional outline · progress is stored in this browser only (no accounts yet)'])
-    + row(['สลับภาษา TH / EN','TH / EN switch'],'real',['แปลทุกข้อความ ปุ่ม feedback และคำอธิบายภาพ · คงตำแหน่งอ่าน คำตอบ และสถานะห้องทดลอง','Translates text, controls, feedback and image descriptions · keeps reading position, answers and lab state'])
-    + row(['เครื่องผสมคอนกรีต 3D (หมุน ซูม มุมมอง hotspot)','3D concrete mixer (orbit, zoom, views, hotspots)'],'real',['WebGL จริง แต่เป็นเรขาคณิตที่สร้างในโค้ดจากภาพอ้างอิง 4 มุม ไม่ใช่โมเดล GLB ระดับ production','Real WebGL, but procedural geometry modelled from the 4-view sheet — not a production GLB'])
-    + row(['ก้อนคอนกรีต 3D และทรงกลมผ่าครึ่ง (ห้องทดลองไฮเดรชัน)','3D concrete cube and cut sphere (hydration lab)'],'real',['WebGL จริง ใช้พื้นผิวที่ตัดจากภาพที่ให้มา (หน้าก้อนคอนกรีต และภาพไฮเดรชัน 3 ช่วง)','Real WebGL, textured with crops of the supplied images (cube face, three hydration discs)'])
-    + row(['วงแหวน 3D วัสดุ 6 สถานะ (เลื่อน/ลากเพื่อหมุน)','3D ring of the six material states (scroll / drag)'],'img',['CSS 3D ใช้ภาพจริงจาก atlas — ภาพแต่ละใบเป็นภาพนิ่ง','CSS 3D with real images from the atlas — each card is a still image'])
-    + row(['กระบวนการผลิต 8 ขั้นตามการเลื่อน','Scroll-driven 8-step process'],'img',['เปลี่ยนภาพทีละฉาก ไม่ใช่วิดีโอต่อเนื่อง — หากต้องการกล้องเคลื่อนต่อเนื่องต้องสร้างฉาก 3D เพิ่ม','Scene-by-scene images, not continuous video — a moving camera needs an extra 3D scene'])
-    + row(['สำรวจโรงงาน + ทัวร์อัตโนมัติ','Factory explorer + guided tour'],'img',['hotspot บนภาพนิ่ง (ผังเชิงแนวคิด) ไม่ใช่ทัวร์ 360° · มีรายการสถานีสำหรับคีย์บอร์ดและโปรแกรมอ่านหน้าจอ','Hotspots on a still image (conceptual layout), not a 360° tour · equivalent station list for keyboard and screen readers'])
-    + row(['ห้องทดลองความละเอียด','Fineness lab'],'real',['คำนวณผิวสัมผัสด้วยเรขาคณิต (×2 ทุกครั้งที่ขนาดลดครึ่ง) ไม่ทำนายค่ากำลังอัด','Surface computed geometrically (×2 each time size halves); no strength prediction'])
-    + row(['แบบทดสอบ 5 รูปแบบ + เช็กระหว่างอ่าน 5 จุด','Quiz with five types + five inline checks'],'real',['แตะเลือก ลากวาง และคีย์บอร์ด · feedback บอกเหตุผลและลิงก์กลับไปบทเรียน','Tap, drag and keyboard · feedback gives reasons and links back to the lesson'])
-    + '</tbody></table>'
-  + '<h2>'+T('สิ่งที่ต้องจัดเตรียมเพิ่มสำหรับงานจริง','Missing production assets')+'</h2><ul>'
-    + ['โมเดล GLB/GLTF ของเครื่องผสม เตาเผา และโรงงาน (ปั้นจากภาพอ้างอิง) แทนเรขาคณิตในโค้ด|GLB/GLTF models of the mixer, kiln and plant (from the reference sheets) to replace procedural geometry',
-       'ภาพถ่ายจริงที่มีสิทธิ์ใช้งาน ตามที่ปรากฏใน PDF photo concept (เขื่อนคอนกรีต คนงานเทคอนกรีต คานสำเร็จรูป ก้อนทดสอบในแบบหล่อ) — ใน kit ไม่มีไฟล์ภาพเหล่านี้|Licensed real photos shown in the photo-concept PDF (concrete dam, workers placing concrete, precast beams, test cubes in moulds) — these files are not in the kit',
-       'asset โปร่งใสรายชิ้น (ตอนนี้ใช้การผสมสีแบบ multiply บนพื้นขาว)|Per-object transparent assets (currently blended with multiply on light surfaces)',
-       'รายชื่อและเนื้อหาจริงของโมดูล 04–98|Real titles and content for modules 04–98',
-       'ระบบหลังบ้าน: บัญชีผู้ใช้ ความคืบหน้าข้ามอุปกรณ์ รายงานผล (LMS / xAPI / SCORM ตามที่ผู้ว่าจ้างใช้)|Back end: accounts, cross-device progress, reporting (LMS / xAPI / SCORM as the client needs)',
-       'ตรวจคำแปลภาษาไทยโดยผู้เชี่ยวชาญด้านศัพท์วัสดุ|Thai translation review by a materials-terminology expert',
-       'เสียงบรรยาย (ทางเลือก ปิดไว้เป็นค่าเริ่มต้น)|Narration audio (optional, off by default)'].map(function(s){ var p = s.split('|'); return '<li>'+T(p[0], p[1])+'</li>'; }).join('')+'</ul>'
-  + '<h2>'+T('บันทึกตรวจทานวิชาการ','Scientific review notes')+'</h2><ul>'
-    + ['อุณหภูมิเผา: PDF ต้นฉบับ (No Slide Title) ระบุ 1420 °C ส่วน photo concept ระบุ ~1,450 °C — เว็บใช้ “~1,450 °C” ตาม photo concept ควรยืนยัน|Burning temperature: the original PDF says 1420 °C, the photo concept says ~1,450 °C — the site uses “~1,450 °C”; please confirm',
-       'ชนิดปูน CSA Type 10/30/50 และค่ากำลังอัดขั้นต่ำ (3 วัน: 12.5 / 22.0 / 10.5 MPa · 28 วัน: 26.5 / ไม่กำหนด / 26.5 MPa) เป็นระบบเรียกชื่อแบบเดิมของแคนาดา ไม่เทียบเท่ามาตรฐานอื่นโดยตรง ต้องตรวจก่อนใช้จริง|CSA Type 10/30/50 and their minimum strengths (3 d: 12.5 / 22.0 / 10.5 MPa · 28 d: 26.5 / not specified / 26.5 MPa) are historical Canadian designations, not universal equivalents — review before production',
-       '“10–15% ของคอนกรีตคือปูน” และ “ยิปซัม ~3–5% ของส่วนผสม” มาจาก photo concept — ควรระบุว่าเป็นโดยปริมาตร/น้ำหนัก และของคอนกรีตหรือของปูน|“10–15% of concrete is cement” and “gypsum ~3–5% of the mix” come from the photo concept — specify by volume/mass, and of concrete vs of cement',
-       '“ปูนเม็ด + ยิปซัมมีในปูนทุกชนิด” จำกัดขอบเขตไว้ที่ปูนปอร์ตแลนด์และปูนผสมในบทเรียนนี้|“Clinker + gypsum in every cement” is scoped to the Portland and blended cements taught here',
-       'คุณสมบัติ “ทึบน้ำ” และ “ไม่หด ไม่ร้าว” ในต้นฉบับ ปรับเป็นถ้อยคำที่ไม่เหมารวม|Source claims “watertight” and “doesn’t shrink or crack” were softened to non-absolute wording',
-       'หินปูนอยู่ทั้ง “ก่อนเผา” (วัตถุดิบหลัก) และ “หลังเผา” (ปูนผสม/ปูนก่อ) — ใน Quiz ข้อจัดกลุ่มจึงรับทั้งสองคำตอบ|Limestone is both a raw material (before the kiln) and an addition (after) — the grouping quiz accepts both',
-       'แคลเซียมคลอไรด์: ต้นฉบับระบุใช้เฉพาะงานบ่อน้ำมันหรืออากาศหนาว — ควรเพิ่มข้อควรระวังเรื่องการกัดกร่อนเหล็กเสริมหากใช้ในหลักสูตรจริง|Calcium chloride: the source limits it to oil wells or cold weather — consider adding the reinforcement-corrosion caution in the final course',
-       'ภาพไฮเดรชันและความละเอียดเป็นภาพเชิงแนวคิด ไม่ใช่ผลวัดหรือภาพจุลทรรศน์ตามสเกล — ติดป้าย “แบบจำลองเชิงแนวคิด” บนหน้าแล้ว|Hydration and fineness images are conceptual, not measurements or to-scale micrographs — labelled “Conceptual model” on the page',
-       'ภาพวัสดุ 10 ชนิดเป็นตัวอย่างลักษณะ ไม่ใช่เกณฑ์ระบุชนิดแร่|The ten material samples are representative appearances, not identification guides'].map(function(s){ var p = s.split('|'); return '<li>'+T(p[0], p[1])+'</li>'; }).join('')+'</ul>'
-  + '<h2>'+T('แผนผังเนื้อหา PDF → เว็บ','Source mapping: PDF → site')+'</h2><table><thead><tr><th>PDF</th><th>'+T('หัวข้อ','Topic')+'</th><th>'+T('อยู่ที่','On the site')+'</th></tr></thead><tbody>'
-    + [['1','ปก: คืออะไร / คุณสมบัติ / ผลิตอย่างไร','Cover: what, qualities, how','เรียน › เริ่มต้น + เครื่องผสม 3D','Learn › Start + 3D mixer'],['2–4','จากเหมืองหินสู่คอนกรีต · เรียงลำดับ · 6 สถานะ','Quarry to concrete · ordering · six states','เรียน › 01 วงแหวน 3D · แบบทดสอบข้อ 1','Learn › 01 3D ring · Quiz Q1'],['5','กระบวนการทีละขั้น','Process step by step','เรียน › 01 กระบวนการ + สำรวจโรงงาน · แบบทดสอบข้อ 4','Learn › 01 process + plant explorer · Quiz Q4'],['6','เริ่มจากคอนกรีต','Start at the end: concrete','เรียน › 02 ผสมคอนกรีต 3D','Learn › 02 3D mix'],['7','ทำไมคอนกรีตแข็ง','Why concrete hardens','เรียน › 02 + ห้องทดลองไฮเดรชัน','Learn › 02 + hydration lab'],['8','ปูนซีเมนต์คืออะไร','What is cement?','เรียน › 02','Learn › 02'],['9–11','ชนิดปูนและกำลังอัด','Cement types and strength','เรียน › 03 (ทายก่อน + กราฟ) · แบบทดสอบข้อ 3','Learn › 03 (predict + chart) · Quiz Q3'],['12–13','อะไรเข้าหม้อบดปูนเสมอ','What always goes into the finish mill','เรียน › 03 เลือกหลายข้อ','Learn › 03 multi-select'],['14','ก่อนเผาหรือหลังเผา','Before or after the kiln','เรียน › 03 · แบบทดสอบข้อ 2','Learn › 03 · Quiz Q2'],['15','เพิ่มกำลังอัดระยะสั้น','Raising short-term strength','เรียน › 03 · ห้องทดลองความละเอียด · แบบทดสอบข้อ 5','Learn › 03 · fineness lab · Quiz Q5'],[T('ต้นฉบับ','Original'),'แผนกเตาเผา · raw mix · สรุป','Kiln department · raw mix · in short','เรียน › 01 ขั้นเผา, สรุป · แบบทดสอบข้อ 4','Learn › 01 burning, summary · Quiz Q4']].map(function(r){ return '<tr><td class="num">'+r[0]+'</td><td>'+T(r[1], r[2])+'</td><td class="t-2">'+T(r[3], r[4])+'</td></tr>'; }).join('')
-    + '</tbody></table>';
-  html += M02.notesHtml();
-  html += M03.notesHtml();
-  $('#notes-root').innerHTML = html; applyLang($('#notes-root'));
+   Reusable: it scans the Learn panels listed in PANELS and attaches one small comment button to the
+   top-right of every infographic image (not to buttons, 3D stages, tiny icons or hidden frames).
+   New or re-rendered images are picked up automatically, so module code does not need to change.
+
+   Sending goes through window.MLFeedback (adapter below). This project has no feedback service yet:
+     • set <meta name="ml-feedback-endpoint" content="https://…"> (or window.ML_FEEDBACK_ENDPOINT) to POST JSON, or
+     • assign window.MLFeedback.transport = function(payload){ return Promise } for another backend.
+   Until one of these is set, sending fails honestly (“not connected”) and the text is kept for retry.
+   Feedback drafts live in their own storage key (ml:igfbDraft) — never in the learner’s notes.
+   ========================================================= */
+var IGFB = (function(){
+var PANELS = [ ['#tab-learn','01'], ['#m2tab-learn','02'], ['#m3tab-learn','03'] ];
+var MODS = { '01':['ปูนซีเมนต์','Cement'], '02':['วัตถุดิบผสมและปูนเม็ด','Raw Mix & Clinker'], '03':['คุณภาพปูนเม็ด','Clinker Quality'] };
+var SKIP = 'button,a,label,select,[role=radio],[role=checkbox],[role=button],[role=tab],.stage3d,.ring,.chain,.flip,.proc-chip,.fallback-img,.ref-overlay,.m3-poster,.igfb-dlg,[data-igfb-skip]';
+var MIN_W = 120, MIN_H = 80, SIZE = 32, INSET = 10;
+var hosts = [], timer = 0, timer2 = 0, ro = null, cur = null, sending = false;
+
+/* ---------- adapter: the only place that knows how feedback leaves the browser ---------- */
+var meta = document.querySelector('meta[name="ml-feedback-endpoint"]');
+window.MLFeedback = window.MLFeedback || {
+  endpoint: (window.ML_FEEDBACK_ENDPOINT || (meta && meta.content) || '').trim(),
+  transport: null,
+  timeoutMs: 15000,
+  isConnected: function(){ return !!(this.transport || this.endpoint); },
+  submit: function(payload){
+    var self = this;
+    if(typeof self.transport === 'function'){ return Promise.resolve().then(function(){ return self.transport(payload); }); }
+    if(!self.endpoint){ var e = new Error('Feedback endpoint is not configured'); e.code = 'not_configured'; return Promise.reject(e); }
+    var ctl = window.AbortController ? new AbortController() : null, t = setTimeout(function(){ if(ctl) ctl.abort(); }, self.timeoutMs);
+    return fetch(self.endpoint, { method:'POST', headers:{ 'Content-Type':'application/json' }, body:JSON.stringify(payload), signal:ctl ? ctl.signal : undefined })
+      .then(function(r){ clearTimeout(t); if(!r.ok){ var e = new Error('HTTP '+r.status); e.code = 'http'; e.status = r.status; throw e; } return true; },
+            function(err){ clearTimeout(t); var e = new Error(err && err.name==='AbortError' ? 'Timed out' : 'Network error'); e.code = 'network'; throw e; });
+  }
+};
+
+/* ---------- discovery ---------- */
+function isCandidate(img){
+  if(!img.src || img.closest(SKIP)) return false;
+  var p = img.parentElement; return !!p;
 }
+function scan(){
+  PANELS.forEach(function(pc){
+    var panel = $(pc[0]); if(!panel) return;
+    $$('img', panel).forEach(function(img){
+      if(img.__igfb || !isCandidate(img)) return;
+      var host = img.parentElement, h = host.__igfbHost;
+      if(!h){ h = makeHost(host, pc[1]); if(!h) return; }
+      img.__igfb = h; h.imgs.push(img);
+      img.addEventListener('load', schedule);
+      if(ro) ro.observe(img);
+    });
+  });
+  hosts = hosts.filter(function(h){ h.imgs = h.imgs.filter(function(i){ return i.isConnected; }); if(!h.host.isConnected || !h.imgs.length){ if(h.btn.parentNode) h.btn.parentNode.removeChild(h.btn); return false; } return true; });
+  layout();
+}
+function hasAbsKids(el){ var all = el.getElementsByTagName('*'); for(var i=0;i<all.length;i++){ var p = getComputedStyle(all[i]).position; if(p==='absolute' || p==='fixed') return true; } return false; }
+function positioned(el){ while(el && el!==document.body){ if(getComputedStyle(el).position!=='static') return el; el = el.parentElement; } return document.body; }
+function makeHost(host, mod){
+  var anchor = host, pos = getComputedStyle(host).position;
+  if(pos==='static'){ if(!hasAbsKids(host)){ host.style.position = 'relative'; } else { anchor = positioned(host.parentElement); } }
+  if(!anchor) return null;
+  var b = document.createElement('button');
+  b.type = 'button'; b.className = 'igfb-btn'; b.hidden = true;
+  b.innerHTML = icon('i-comment') + '<span class="igfb-tip" aria-hidden="true"></span>';
+  b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(h); });
+  ['pointerdown','mousedown','touchstart'].forEach(function(ev){ b.addEventListener(ev, function(e){ e.stopPropagation(); }, { passive:true }); });
+  anchor.appendChild(b);
+  var h = { host:host, anchor:anchor, mod:mod, imgs:[], btn:b };
+  host.__igfbHost = h; hosts.push(h); label(h);
+  if(ro){ ro.observe(host); }
+  return h;
+}
+function label(h){ var t = L('แจ้งแก้ไขภาพ','Suggest a correction'); h.btn.setAttribute('aria-label', t); $('.igfb-tip', h.btn).textContent = t; }
+
+/* ---------- visibility + placement ---------- */
+function effOpacity(el, stop){ var o = 1; while(el && el!==stop && el.nodeType===1){ var cs = getComputedStyle(el); if(cs.display==='none' || cs.visibility==='hidden') return 0; o *= parseFloat(cs.opacity); el = el.parentElement; } return o; }
+function bestImg(h){
+  var best = null, score = 0;
+  h.imgs.forEach(function(img){
+    if(!img.isConnected || img.hidden) return;
+    var w = img.offsetWidth, ht = img.offsetHeight; if(w < MIN_W || ht < MIN_H) return;
+    var op = effOpacity(img, document.body); if(op < 0.5) return;
+    var s = w*ht*op; if(s > score){ score = s; best = img; }
+  });
+  return best;
+}
+function offsetIn(el, anchor){
+  var x = 0, y = 0, e = el;
+  while(e && e!==anchor){ x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+  if(e===anchor) return { x:x, y:y };
+  var a = anchor.getBoundingClientRect(), r = el.getBoundingClientRect();
+  return { x:r.left - a.left - anchor.clientLeft + anchor.scrollLeft, y:r.top - a.top - anchor.clientTop + anchor.scrollTop };
+}
+function contentBox(img){
+  var w = img.offsetWidth, h = img.offsetHeight, fit = getComputedStyle(img).objectFit, nw = img.naturalWidth, nh = img.naturalHeight;
+  if((fit==='contain' || fit==='scale-down') && nw && nh){
+    var s = Math.min(w/nw, h/nh); if(fit==='scale-down') s = Math.min(1, s);
+    var cw = nw*s, ch = nh*s; return { x:(w-cw)/2, y:(h-ch)/2, w:cw, h:ch };
+  }
+  return { x:0, y:0, w:w, h:h };
+}
+function place(h){
+  var img = bestImg(h), b = h.btn;
+  if(!img || !$(PANELS.filter(function(p){ return p[1]===h.mod; })[0][0]).offsetParent){ b.hidden = true; h.cur = null; return; }
+  h.cur = img;
+  var o = offsetIn(img, h.anchor), c = contentBox(img);
+  var left = o.x + c.x + c.w - SIZE - INSET, top = o.y + c.y + INSET;
+  b.hidden = false; b.style.left = Math.max(4, left)+'px'; b.style.top = Math.max(4, top)+'px';
+  /* keep clear of badges or chips already sitting in that corner */
+  var br = b.getBoundingClientRect();
+  $$(':scope > *', h.anchor).forEach(function(el){
+    if(el===b || el.contains(img) || el.classList.contains('igfb-btn')) return;
+    var cs = getComputedStyle(el); if(cs.position!=='absolute' || cs.display==='none' || el.offsetWidth===0) return;
+    var r = el.getBoundingClientRect();
+    if(r.left < br.right && r.right > br.left && r.top < br.bottom && r.bottom > br.top && r.height < 80){ top += (r.bottom - br.top) + 6; b.style.top = top+'px'; br = b.getBoundingClientRect(); }
+  });
+}
+function near(h){ var r = h.host.getBoundingClientRect(); return r.bottom > -innerHeight && r.top < innerHeight*2; }
+function layout(all){ hosts.forEach(function(h){ if(all===true || !h.placed || near(h)){ place(h); h.placed = true; } }); }
+var sTick = 0; function onScrollNear(){ if(sTick) return; sTick = setTimeout(function(){ sTick = 0; layout(); }, 180); }
+function schedule(){ clearTimeout(timer); clearTimeout(timer2); timer = setTimeout(scan, 120); timer2 = setTimeout(layout, 900); }
+
+/* ---------- context (filled automatically) ---------- */
+var REV = null;
+function assetIdOf(img){
+  var src = img.currentSrc || img.src;
+  for(var k in IMG){ if(IMG[k]===src) return k; }
+  return img.getAttribute('data-img') || null;
+}
+function headingOf(sec){
+  if(!sec) return '';
+  if(/hero$/.test(sec.id)) return L('เริ่มต้นบทเรียน','Start of the lesson');
+  var hd = sec.querySelector('h2, h1'), p = sec.previousElementSibling, n = 0;
+  while(!hd && p && n<2){ hd = p.querySelector && p.querySelector('h2, h1'); p = p.previousElementSibling; n++; }
+  return hd ? hd.textContent.replace(/\s+/g,' ').trim() : '';
+}
+function context(h){
+  var img = h.cur || bestImg(h) || h.imgs[0], sec = img.closest('[data-track]') || img.closest('section[id]');
+  var id = assetIdOf(img);
+  return { img:img, moduleId:h.mod, moduleTitle:L(MODS[h.mod][0], MODS[h.mod][1]), sectionId:sec ? sec.id : '', sectionTitle:headingOf(sec),
+    assetId:id || '', assetUrl:id ? 'assets/'+id+'.webp' : '', imageAlt:(img.getAttribute('alt')||'').trim() };
+}
+function dkey(c){ return c.moduleId+':'+c.sectionId+':'+(c.assetId||c.imageAlt); }
+function drafts(){ return store.get('igfbDraft', {}) || {}; }
+function saveDraft(c, issue, sug){ var d = drafts(); if(issue || sug) d[dkey(c)] = { issue:issue, suggestion:sug, at:new Date().toISOString() }; else delete d[dkey(c)]; store.set('igfbDraft', d); }
+function isoLocal(d){
+  function p(n){ return (n<10?'0':'')+n; } var tz = -d.getTimezoneOffset(), s = tz>=0?'+':'-'; tz = Math.abs(tz);
+  return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+'T'+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds())+s+p(Math.floor(tz/60))+':'+p(tz%60);
+}
+
+/* ---------- dialog ---------- */
+var dlg = null, lastBtn = null;
+function build(){
+  dlg = document.createElement('dialog');
+  dlg.className = 'ml-dialog igfb-dlg'; dlg.id = 'igfb-dlg'; dlg.setAttribute('aria-labelledby','igfb-title');
+  dlg.innerHTML = '<form class="igfb-body" method="dialog" novalidate>'
+    + '<div class="igfb-head"><div><span class="igfb-kicker">'+T('ข้อเสนอแนะเกี่ยวกับ Infographic','Infographic feedback')+'</span><h2 id="igfb-title">'+T('แจ้งแก้ไขภาพ','Suggest a correction')+'</h2></div>'
+    + '<button type="button" class="icon-btn igfb-x" data-igfb="cancel" aria-label="ปิด" data-en-aria-label="Close">'+icon('i-x')+'</button></div>'
+    + '<div class="igfb-form">'
+    + '<figure class="igfb-prev"><img alt=""></figure>'
+    + '<dl class="igfb-ctx"><div><dt>'+T('โมดูล','Module')+'</dt><dd data-c="mod"></dd></div><div><dt>'+T('หัวข้อ','Topic')+'</dt><dd data-c="sec"></dd></div></dl>'
+    + '<label class="igfb-field"><span class="igfb-lbl">'+T('ภาพนี้มีจุดไหนที่ควรแก้ไข?','What in this image should be corrected?')+' <b class="igfb-req" aria-hidden="true">*</b></span>'
+    + '<textarea name="issue" rows="3" required aria-required="true" maxlength="3000" aria-describedby="igfb-err"></textarea><span class="igfb-err" id="igfb-err" role="alert"></span></label>'
+    + '<label class="igfb-field"><span class="igfb-lbl">'+T('เสนอคำแก้ไขหรือข้อมูลเพิ่มเติม','Suggested correction or extra information')+' <small>'+T('(ไม่บังคับ)','(optional)')+'</small></span>'
+    + '<textarea name="suggestion" rows="2" maxlength="3000"></textarea></label>'
+    + '<p class="igfb-auto">'+icon('i-info')+'<span data-c="auto"></span></p>'
+    + '<div class="igfb-status" role="status" aria-live="polite"></div>'
+    + '<div class="igfb-actions"><button type="button" class="btn btn-secondary" data-igfb="cancel">'+T('ยกเลิก','Cancel')+'</button>'
+    + '<button type="submit" class="btn btn-primary" data-igfb="send"><span class="igfb-spin" aria-hidden="true"></span><span data-c="sendlbl"></span></button></div>'
+    + '</div>'
+    + '<div class="igfb-done" hidden><span class="igfb-done-ic">'+icon('i-check')+'</span><p>'+T('ขอบคุณสำหรับข้อเสนอแนะ ทีมงานจะนำไปตรวจสอบ','Thank you for your feedback. Our team will review it.')+'</p>'
+    + '<button type="button" class="btn btn-primary" data-igfb="close">'+T('ปิด','Close')+'</button></div>'
+    + '</form>';
+  document.body.appendChild(dlg); applyLang(dlg);
+  var form = $('form', dlg), issue = $('[name=issue]', dlg), sug = $('[name=suggestion]', dlg);
+  var dt = 0; function keep(){ clearTimeout(dt); dt = setTimeout(function(){ if(cur) saveDraft(cur, issue.value, sug.value); }, 250); }
+  issue.addEventListener('input', function(){ keep(); if(issue.value.trim()) setErr(''); });
+  sug.addEventListener('input', keep);
+  form.addEventListener('submit', function(e){ e.preventDefault(); send(); });
+  dlg.addEventListener('click', function(e){
+    var a = e.target.closest('[data-igfb]'); if(!a) return;
+    if(a.dataset.igfb==='cancel' || a.dataset.igfb==='close'){ e.preventDefault(); close(); }
+  });
+  dlg.addEventListener('cancel', function(e){ if(sending){ e.preventDefault(); return; } e.preventDefault(); close(); });
+  dlg.addEventListener('close', function(){ if(lastBtn && lastBtn.isConnected) lastBtn.focus(); });
+}
+function setErr(t){ $('#igfb-err').textContent = t; $('[name=issue]', dlg).setAttribute('aria-invalid', t ? 'true' : 'false'); }
+function setStatus(kind, th, en){ var s = $('.igfb-status', dlg); s.className = 'igfb-status'+(kind?' '+kind:''); s.innerHTML = kind ? (icon(kind==='err' ? 'i-warn' : 'i-info')+'<span>'+T(th, en)+'</span>') : ''; applyLang(s); }
+function sendLabel(){ $('[data-c=sendlbl]', dlg).textContent = sending ? L('กำลังส่ง…','Sending…') : (dlg.dataset.failed ? L('ลองส่งอีกครั้ง','Try again') : L('ส่งข้อเสนอแนะ','Send feedback')); }
+function fillCtx(){
+  if(!cur) return;
+  $('[data-c=mod]', dlg).textContent = cur.moduleId+' · '+cur.moduleTitle;
+  $('[data-c=sec]', dlg).textContent = cur.sectionTitle || cur.sectionId;
+  $('[data-c=auto]', dlg).textContent = L('ระบบแนบให้อัตโนมัติ: โมดูล หัวข้อ รหัสภาพ ', 'Attached automatically: module, topic, image ID ') + (cur.assetId || cur.imageAlt || '—') + L(' ภาษาที่กำลังดู ('+cur.language.toUpperCase()+') และเวลาที่ส่ง', ', viewing language ('+cur.language.toUpperCase()+') and the time you send');
+  sendLabel();
+}
+function open(h){
+  if(!dlg) build();
+  var c = context(h); c.language = lang; cur = c; lastBtn = h.btn;
+  pauseMedia();
+  delete dlg.dataset.failed; sending = false;
+  var pv = $('.igfb-prev img', dlg); pv.src = c.img.currentSrc || c.img.src; pv.alt = c.imageAlt ? L('ภาพที่กำลังแจ้ง: ','Image being reported: ')+c.imageAlt : L('ภาพที่กำลังแจ้ง','Image being reported');
+  var d = drafts()[dkey(c)] || {};
+  $('[name=issue]', dlg).value = d.issue || ''; $('[name=suggestion]', dlg).value = d.suggestion || '';
+  $('.igfb-form', dlg).hidden = false; $('.igfb-done', dlg).hidden = true;
+  lock(false); setErr(''); setStatus(d.issue ? 'info' : '', 'ข้อความที่คุณเขียนไว้ก่อนหน้านี้ยังอยู่ — แก้ไขต่อหรือส่งได้เลย', 'Your earlier text is still here — edit it or send it.');
+  fillCtx();
+  if(dlg.showModal) dlg.showModal(); else dlg.setAttribute('open','');
+  setTimeout(function(){ $('[name=issue]', dlg).focus(); }, 30);
+}
+function close(){
+  if(sending) return;
+  if(cur && !$('.igfb-form', dlg).hidden) saveDraft(cur, $('[name=issue]', dlg).value, $('[name=suggestion]', dlg).value);
+  if(dlg.close) dlg.close(); else dlg.removeAttribute('open');
+}
+function lock(on){ $$('textarea, [data-igfb]', dlg).forEach(function(el){ if(el.tagName==='TEXTAREA') el.readOnly = on; else el.disabled = on; }); dlg.classList.toggle('is-sending', on); }
+function send(){
+  if(sending || !cur) return;
+  var issue = $('[name=issue]', dlg).value.trim(), sug = $('[name=suggestion]', dlg).value.trim();
+  if(!issue){ setErr(L('กรุณาบอกจุดที่ควรแก้ไขก่อนส่ง','Please describe what should be corrected before sending.')); $('[name=issue]', dlg).focus(); return; }
+  setErr(''); saveDraft(cur, $('[name=issue]', dlg).value, $('[name=suggestion]', dlg).value);
+  var vm = document.querySelector('meta[name="version"]');
+  var payload = { schema:'material-lab/infographic-feedback@1', moduleId:cur.moduleId, moduleTitle:cur.moduleTitle, sectionId:cur.sectionId, sectionTitle:cur.sectionTitle,
+    assetId:cur.assetId, assetUrl:cur.assetUrl, imageAlt:cur.imageAlt, language:cur.language, issue:issue, suggestion:sug,
+    submittedAt:isoLocal(new Date()), pageUrl:location.href.split('?')[0], contentVersion:vm ? vm.content : '' };
+  var ctx = cur; sending = true; lock(true); sendLabel(); setStatus('info', 'กำลังส่ง… กรุณารอสักครู่', 'Sending… please wait');
+  window.MLFeedback.submit(payload).then(function(){
+    sending = false; lock(false); saveDraft(ctx, '', ''); delete dlg.dataset.failed;
+    if(cur!==ctx) return;
+    $('.igfb-form', dlg).hidden = true; $('.igfb-done', dlg).hidden = false; setTimeout(function(){ $('[data-igfb=close]', dlg).focus(); }, 30);
+  }, function(err){
+    sending = false; lock(false); dlg.dataset.failed = '1'; sendLabel();
+    if(err && err.code==='not_configured') setStatus('err', 'ยังส่งไม่ได้ — เว็บไซต์ยังไม่ได้เชื่อมต่อระบบรับข้อเสนอแนะ ข้อความของคุณถูกเก็บไว้ในเครื่องนี้ ลองส่งใหม่ได้ภายหลัง', 'Not sent — this site is not connected to a feedback service yet. Your text is kept on this device so you can try again later.');
+    else setStatus('err', 'ส่งไม่สำเร็จ — ตรวจสอบการเชื่อมต่อแล้วลองอีกครั้ง ข้อความของคุณยังอยู่ครบ', 'Could not send — check your connection and try again. Your text is still here.');
+  });
+}
+function pauseMedia(){ $$('video').forEach(function(v){ try{ v.pause(); }catch(e){} }); }
+
+/* ---------- start ---------- */
+function init(){
+  if(window.ResizeObserver) ro = new ResizeObserver(function(){ clearTimeout(timer2); timer2 = setTimeout(layout, 60); });
+  if(window.MutationObserver){
+    var mo = new MutationObserver(function(ms){
+      for(var i=0;i<ms.length;i++){ var t = ms[i].target; if(t.closest && t.closest('.igfb-btn, .igfb-dlg')) continue; schedule(); return; }
+    });
+    PANELS.forEach(function(p){ var el = $(p[0]); if(el) mo.observe(el, { childList:true, subtree:true, attributes:true, attributeFilter:['class','hidden','src','data-s'] }); });
+    $$('.page').forEach(function(pg){ mo.observe(pg, { attributes:true, attributeFilter:['hidden'] }); });
+  }
+  window.addEventListener('resize', function(){ clearTimeout(timer2); timer2 = setTimeout(function(){ layout(true); }, 120); });
+  window.addEventListener('scroll', onScrollNear, { passive:true });
+  PANELS.forEach(function(p){ var el = $(p[0]); if(el) el.addEventListener('transitionend', function(e){ if(e.propertyName==='opacity' || e.propertyName==='transform') onScrollNear(); }); });
+  window.addEventListener('hashchange', function(){ setTimeout(scan, 200); setTimeout(layout, 900); });
+  onLang(function(){ hosts.forEach(label); if(dlg){ applyLang(dlg); fillCtx(); } setTimeout(layout, 60); });
+  scan(); setTimeout(scan, 1200);
+}
+init();
+return { scan:scan, layout:layout, _hosts:function(){ return hosts; } };
+})();
+
 
 /* ======================= boot ======================= */
 $$('img[data-img]').forEach(function(im){ var u = IMG[im.getAttribute('data-img')]; if(u) im.src = u; });
