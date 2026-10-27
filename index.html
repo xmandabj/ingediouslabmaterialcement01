@@ -2,7 +2,7 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
-<meta name="version" content="0.1">
+<meta name="version" content="0.2">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Material Lab · Cement</title>
 <meta name="description" content="MATERIAL LAB — bilingual interactive learning POC. Module 01: Cement · Module 02: Raw mix &amp; clinker · Module 03: Clinker quality.">
@@ -1310,11 +1310,6 @@ html[lang="th"] .m2-sumcol h3{ letter-spacing:.02em; font-size:17px; }
 @media (max-width:900px){ .m2-sum3{ grid-template-columns:1fr; } .m2-sumarr{ transform:rotate(90deg); justify-self:center; } }
 
 /* credits */
-.m2-credits{ list-style:none; padding:0; margin:18px 0 0; display:grid; gap:8px; }
-.m2-credits li{ display:grid; grid-template-columns:72px 1fr; gap:14px; align-items:center; padding:10px 12px; border-radius:14px; border:1px solid var(--hair); background:#fff; font-size:14.5px; line-height:1.5; }
-.m2-credits img{ width:72px; height:54px; object-fit:cover; border-radius:8px; background:var(--surface); }
-.m2-credits a{ word-break:break-word; }
-.m2-credits small{ display:block; color:var(--text-2); font-size:13px; }
 .m2-refs-list{ padding-left:20px; display:grid; gap:6px; font-size:15px; }
 
 /* =================== LAB =================== */
@@ -1699,7 +1694,6 @@ html[lang="th"] .m3-fk{ letter-spacing:.02em; }
 .m3-dc p{ font-size:16.5px; line-height:1.6; }
 .m3-review{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:center; margin-top:24px; }
 .m3-refs{ padding-left:20px; display:grid; gap:6px; font-size:15px; }
-.m3-thumb{ padding:0; border:0; background:none; border-radius:8px; overflow:hidden; cursor:zoom-in; }
 @media (max-width:900px){ .m3-roles,.m3-predgrid{ grid-template-columns:1fr 1fr; } .m3-phasebar{ grid-template-columns:1fr 1fr; } }
 @media (max-width:520px){ .m3-roles,.m3-predgrid{ grid-template-columns:1fr; } }
 
@@ -3122,24 +3116,6 @@ html[lang="th"] .m3-fk{ letter-spacing:.02em; }
         </div>
       </div>
     </section>
-
-    <section class="block" id="m2-credits" data-chap-title="เครดิต" data-en-chap-title="Credits" style="padding-top:64px">
-      <div class="wrap-narrow">
-        <div class="eyebrow" data-en="Appendix">ภาคผนวก</div>
-        <h2 class="t-heading" style="margin:6px 0 8px" data-en="Photo credits &amp; sources">เครดิตภาพและแหล่งข้อมูล</h2>
-        <p class="t-2" style="font-size:16px" data-en="Photos from Wikimedia Commons (free licences), used to illustrate concepts only. Replace them with real photos of the client’s plant before release, and check each licence at its source.">ภาพจาก Wikimedia Commons (สัญญาอนุญาตแบบเสรี) ใช้ประกอบแนวคิดเท่านั้น — ควรแทนด้วยภาพจริงของโรงงานผู้ว่าจ้างก่อนเผยแพร่ และตรวจสัญญาอนุญาตที่ต้นทางทุกภาพ</p>
-        <ul class="m2-credits" id="m2-credit-list"></ul>
-        <p class="t-2" style="font-size:15px;margin-top:16px" data-en="All other illustrations in this module are newly generated conceptual images (not photographs, microscopy or measurements).">ภาพประกอบอื่นในบทนี้เป็นภาพสร้างใหม่เชิงแนวคิด (ไม่ใช่ภาพถ่าย ภาพจุลทรรศน์ หรือผลการวัด)</p>
-        <h3 style="font-size:18px;margin:24px 0 8px" data-en="References used to check the content">แหล่งอ้างอิงที่ใช้ตรวจเนื้อหา</h3>
-        <ul class="m2-refs-list">
-          <li><a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=931807" target="_blank" rel="noopener">NIST — cement notation (C = CaO, S = SiO₂, A = Al₂O₃, F = Fe₂O₃)</a></li>
-          <li><a href="https://www.nist.gov/document/lecture-03-stutzmanpdf" target="_blank" rel="noopener">NIST — clinker phase identification (alite, belite, aluminate, ferrite)</a></li>
-          <li><a href="https://www.usgs.gov/media/files/analysis-soils-and-sediments-loss-ignition" target="_blank" rel="noopener">USGS — Loss on ignition (definition only)</a></li>
-          <li><a href="https://github.com/phetsims/gas-properties/blob/main/doc/model.md" target="_blank" rel="noopener">PhET — Gas Properties model</a></li>
-          <li><a href="https://www.heidelbergmaterials.com/en/products-and-services/cement/how-cement-is-made" target="_blank" rel="noopener">Heidelberg Materials — How cement is made</a></li>
-        </ul>
-      </div>
-    </section>
   </div>
 
   <!-- ============================ LAB ============================ -->
@@ -3630,24 +3606,6 @@ html[lang="th"] .m3-fk{ letter-spacing:.02em; }
           <button class="btn btn-primary btn-lg" type="button" data-m3tab="lab"><svg><use href="#i-flask"/></svg><span data-en="Go to the Lab">ไปห้องทดลอง</span></button>
           <button class="btn btn-secondary btn-lg" type="button" data-m3tab="quiz" data-en="Test your understanding">ทดสอบความเข้าใจ</button>
         </div>
-      </div>
-    </section>
-
-    <section class="block" id="m3-credits" style="background:var(--surface-2)">
-      <div class="wrap" style="max-width:860px">
-        <div class="eyebrow" data-en="Appendix">ภาคผนวก</div>
-        <h2 class="t-heading" style="margin:8px 0 10px" data-en="Image credits &amp; sources">เครดิตภาพและแหล่งข้อมูล</h2>
-        <p class="t-2" style="font-size:16px" data-en="Original photos from the source deck (Wikimedia Commons, free licences) — illustrative only. Replace with the client’s own plant photos before release and verify each licence at the source.">ภาพถ่ายจากสไลด์ต้นฉบับ (Wikimedia Commons สัญญาอนุญาตแบบเสรี) ใช้ประกอบแนวคิดเท่านั้น — ควรแทนด้วยภาพจริงของโรงงานผู้ว่าจ้างก่อนเผยแพร่ และตรวจสัญญาอนุญาตที่ต้นทางทุกภาพ</p>
-        <ul class="m2-credits" id="m3-credit-list"></ul>
-        <p class="src-note" style="margin-top:14px"><svg><use href="#i-info"/></svg><span data-en="All other images in this module are newly generated conceptual renders (not photos, micrographs or measurements). The 3D clinker is a schematic starter model; colour areas are not mass percentages.">ภาพอื่นในบทนี้เป็นภาพสร้างใหม่เชิงแนวคิด (ไม่ใช่ภาพถ่าย ภาพจุลทรรศน์ หรือผลการวัด) · ปูนเม็ด 3D เป็นโมเดล schematic เริ่มต้น พื้นที่สีไม่ใช่สัดส่วนมวล</span></p>
-        <h3 style="font-size:17px;margin:22px 0 8px" data-en="References used to check the content">แหล่งอ้างอิงที่ใช้ตรวจเนื้อหา</h3>
-        <ul class="m3-refs">
-          <li><a href="https://www.nist.gov/publications/direct-determination-phases-portland-cements-quantitative-x-ray-powder-diffraction" target="_blank" rel="noopener">NIST — Direct determination of phases (quantitative XRD)</a></li>
-          <li><a href="https://cemgems.org/cement/clinker-minerals/" target="_blank" rel="noopener">CemGEMS — Clinker minerals</a></li>
-          <li><a href="https://cemgems.org/hydration/about-hydration/" target="_blank" rel="noopener">CemGEMS — Cement hydration</a></li>
-          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5951452/" target="_blank" rel="noopener">Research — Gypsum and early C₃A hydration</a></li>
-          <li><a href="https://www.concrete.org/frequentlyaskedquestions.aspx?faqid=741" target="_blank" rel="noopener">ACI — Precautions against sulfate attack</a></li>
-        </ul>
       </div>
     </section>
   </div>
@@ -5707,7 +5665,7 @@ function initLearn(){
   buildChapNav2(); initPhotoToggles(); initRocks(); initCorrect(); initDonut(); initNotation(); initStages();
   lazyInit($('#m2-stage-kiln'), initKilnExplorer);
   initCalc(); initLoi(); initCO2(); initCheckpoints(); initMinerals(); lazyInit($('#m2-stage-clinker'), initClinker3D);
-  initMolar(); initCase(); initBalance(); initGasBoxes(); initCredits(); initTrack2(); initHero3D();
+  initMolar(); initCase(); initBalance(); initGasBoxes(); initTrack2(); initHero3D();
   observeReveal($('#m2tab-learn'));
   learnReady2 = true; onScroll2();
 }
@@ -6213,27 +6171,6 @@ function initGasBoxes(){
   li.innerHTML = 'ถ้าใช้ 273.15 K แทน 273 K จะได้ ≈ '+fmt(alt)+' m³/h — แนวคิดเดิม ต่างกันที่การปัดเศษ'; applyLang(li.parentElement);
 }
 
-/* credits (slide 21) — only photos actually displayed */
-var CREDITS = [
-  ['m2-ph-limestone','Limestone (Sisson Member, St. Louis Limestone, Middle Mississippian; Putnam County, Indiana, USA)','James St. John','CC BY 2.0','https://commons.wikimedia.org/wiki/File:Limestone_(Sisson_Member,_St._Louis_Limestone,_Middle_Mississippian;_Putnam_County,_Indiana,_USA)_(34806273141).jpg'],
-  ['m2-ph-shale','Gray shale (Benton Shale, Upper Cretaceous; Red Rock Canyon Open Space, Colorado Springs, Colorado, USA) 10','James St. John','CC BY 2.0','https://commons.wikimedia.org/wiki/File:Gray_shale_(Benton_Shale,_Upper_Cretaceous;_Red_Rock_Canyon_Open_Space,_Colorado_Springs,_Colorado,_USA)_10.jpg'],
-  ['m2-ph-sand','Pile of Sand for Building in Anambra State','Johnnybam','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Pile_of_Sand_for_Building_in_Anambra_State.jpg'],
-  ['m2-ph-bauxite','Pisolitic bauxite (Alcoa Bauxite Mine, Arkansas, USA) 1','James St. John','CC BY 2.0','https://commons.wikimedia.org/wiki/File:Pisolitic_bauxite_(Alcoa_Bauxite_Mine,_Arkansas,_USA)_1.jpg'],
-  ['m2-ph-ironore','Hematite-rich iron ore (Precambrian; Pioneer Mine, Ely, Minnesota, USA) 1','James St. John','CC BY 2.0','https://commons.wikimedia.org/wiki/File:Hematite-rich_iron_ore_(Precambrian;_Pioneer_Mine,_Ely,_Minnesota,_USA)_1.jpg'],
-  ['m2-ph-stacker','LDLSStacker','LinguisticDemographer at English Wikipedia','Public domain','https://commons.wikimedia.org/wiki/File:LDLSStacker.jpg'],
-  ['m2-ph-kiln','Rotary kilns, Sundon cement plant - geograph.org.uk - 2421111','Dylan Moore','CC BY-SA 2.0','https://commons.wikimedia.org/wiki/File:Rotary_kilns,_Sundon_cement_plant_-_geograph.org.uk_-_2421111.jpg'],
-  ['m2-ph-preheater','Preheater tower, Ballyconnell cement plant - geograph.org.uk - 1385739','Dylan Moore','CC BY-SA 2.0','https://commons.wikimedia.org/wiki/File:Preheater_tower,_Ballyconnell_cement_plant_-_geograph.org.uk_-_1385739.jpg'],
-  ['m2-ph-quicklime','Calcium oxide powder','Leiem','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Calcium_oxide_powder.JPG'],
-  ['m2-ph-stack','SMOKING CHIMNEYS OF A CEMENT PLANT IN INDUSTRIAL AREA OF SAN JUAN - NARA - 546363','John Vachon','Public domain','https://commons.wikimedia.org/wiki/File:SMOKING_CHIMNEYS_OF_A_CEMENT_PLANT_IN_INDUSTRIAL_AREA_OF_SAN_JUAN_-_NARA_-_546363.jpg'],
-  ['m2-ph-flamestrip','Rotační pec(6)','Chmee2','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Rota%C4%8Dn%C3%AD_pec(6).jpg'],
-  ['m2-ph-clinker','Piece of clinker','Tashkoskim','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Piece_of_clinker.JPG'],
-  ['m2-ph-alite','Alite crystal model','Anselm Schüler','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Alite_crystal_model.png'],
-  ['m2-ph-clinkerout','Clinker coming out of Superior Kiln','凰兰时罗','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Clinker_coming_out_of_Superior_Kiln.jpg']
-];
-function initCredits(){
-  $('#m2-credit-list').innerHTML = CREDITS.map(function(c){ return '<li><img src="'+img(c[0])+'" alt="" loading="lazy"><div><a href="'+c[4]+'" target="_blank" rel="noopener">'+esc(c[1])+'</a><small>'+esc(c[2])+' · '+esc(c[3])+' · Wikimedia Commons</small></div></li>'; }).join('');
-}
-
 /* =========================================================
    LAB
    ========================================================= */
@@ -6693,7 +6630,7 @@ function notesHtml(){
       ['raw mix “inert” ปรับเป็น “ยังไม่มีสมบัติยึดประสานแบบไฮดรอลิกเหมือนปูน” · ไม่มีแบบจำลองทำนายแร่หรือกำลังอัดจากสูตร','Raw mix “inert” reworded to “does not bind hydraulically like cement” · no model predicts phases or strength from the recipe'],
       ['ภาพผ่าเม็ด ภาพ 4 มุม และภาพ 4 ช่วงอุณหภูมิเป็นภาพเชิงแนวคิด ไม่ใช่ภาพจุลทรรศน์ ผลวัด หรือการจำลอง','The cut nodule, 4-view and 4-checkpoint images are conceptual — not microscopy, measurements or simulations']])+'</ul>'
   + '<h3>'+T('แผนผังสไลด์ → เว็บ (โมดูล 02)','Slide → site mapping (Module 02)')+'</h3><table><thead><tr><th>'+T('สไลด์','Slide')+'</th><th>'+T('หัวข้อ','Topic')+'</th><th>'+T('อยู่ที่','On the site')+'</th></tr></thead><tbody>'
-  + [['1','ปก + 4 คำถาม','Cover + 4 questions','เรียน › เริ่มต้น + สายการเผา 3D','Learn › Start + 3D kiln line'],['2–5','วัตถุดิบ ปรับสูตร raw mix ชวเลข','Raw materials, correction, raw mix, notation','เรียน › บทที่ 01 · แบบทดสอบข้อ 1–3 · Lab ปรับสูตร','Learn › chapter 01 · Quiz Q1–3 · recipe lab'],['6–7','2 ขั้นหลักของการเผา','Two burning stages','เรียน › บทที่ 02 · แบบทดสอบข้อ 4','Learn › chapter 02 · Quiz Q4'],['8','แคลไซน์ 820–900 °C','Calcining 820–900 °C','เรียน › บทที่ 02 (เลื่อน) · Lab แคลไซน์ · ข้อ 5','Learn › chapter 02 (scroll) · calcining lab · Q5'],['9–10','LOI','LOI','เรียน › บทที่ 02 · ข้อ 7–8','Learn › chapter 02 · Q7–8'],['11','CO₂ จากการแคลไซน์','CO₂ from calcining','เรียน › บทที่ 02 · ข้อ 6','Learn › chapter 02 · Q6'],['12','เกิดปูนเม็ด','Clinkering','เรียน › บทที่ 02 จุดตรวจอุณหภูมิ','Learn › chapter 02 checkpoints'],['13–16','4 แร่ มวลโมลาร์ ตัวประสาน','Four minerals, molar mass, binder','เรียน › บทที่ 03 · Lab ประกอบแร่ · ข้อ 9–13','Learn › chapter 03 · mineral lab · Q9–13'],['17–19','กรณีศึกษาโรงงาน','Plant case study','เรียน › บทที่ 04 · Lab ก๊าซร้อน · ข้อ 14–20','Learn › chapter 04 · hot-gas lab · Q14–20'],['20','สรุป','In short','เรียน › สรุป','Learn › In short'],['21','เครดิตภาพ','Photo credits','เรียน › เครดิตภาพและแหล่งข้อมูล','Learn › Photo credits &amp; sources']].map(function(r){ return '<tr><td class="num">'+r[0]+'</td><td>'+T(r[1], r[2])+'</td><td class="t-2">'+T(r[3], r[4])+'</td></tr>'; }).join('')
+  + [['1','ปก + 4 คำถาม','Cover + 4 questions','เรียน › เริ่มต้น + สายการเผา 3D','Learn › Start + 3D kiln line'],['2–5','วัตถุดิบ ปรับสูตร raw mix ชวเลข','Raw materials, correction, raw mix, notation','เรียน › บทที่ 01 · แบบทดสอบข้อ 1–3 · Lab ปรับสูตร','Learn › chapter 01 · Quiz Q1–3 · recipe lab'],['6–7','2 ขั้นหลักของการเผา','Two burning stages','เรียน › บทที่ 02 · แบบทดสอบข้อ 4','Learn › chapter 02 · Quiz Q4'],['8','แคลไซน์ 820–900 °C','Calcining 820–900 °C','เรียน › บทที่ 02 (เลื่อน) · Lab แคลไซน์ · ข้อ 5','Learn › chapter 02 (scroll) · calcining lab · Q5'],['9–10','LOI','LOI','เรียน › บทที่ 02 · ข้อ 7–8','Learn › chapter 02 · Q7–8'],['11','CO₂ จากการแคลไซน์','CO₂ from calcining','เรียน › บทที่ 02 · ข้อ 6','Learn › chapter 02 · Q6'],['12','เกิดปูนเม็ด','Clinkering','เรียน › บทที่ 02 จุดตรวจอุณหภูมิ','Learn › chapter 02 checkpoints'],['13–16','4 แร่ มวลโมลาร์ ตัวประสาน','Four minerals, molar mass, binder','เรียน › บทที่ 03 · Lab ประกอบแร่ · ข้อ 9–13','Learn › chapter 03 · mineral lab · Q9–13'],['17–19','กรณีศึกษาโรงงาน','Plant case study','เรียน › บทที่ 04 · Lab ก๊าซร้อน · ข้อ 14–20','Learn › chapter 04 · hot-gas lab · Q14–20'],['20','สรุป','In short','เรียน › สรุป','Learn › In short'],['21','เครดิตภาพ','Photo credits','เครดิตแสดงใต้ภาพถ่ายแต่ละภาพ','Shown under each photo']].map(function(r){ return '<tr><td class="num">'+r[0]+'</td><td>'+T(r[1], r[2])+'</td><td class="t-2">'+T(r[3], r[4])+'</td></tr>'; }).join('')
   + '</tbody></table>';
 }
 
@@ -6844,7 +6781,7 @@ function initLearn(){
   if(inited.learn) return; inited.learn = true;
   buildChapNav3(); initPhotoToggles(); initHeroChips(); lazyInit($('#m3-stage-hero'), initHero3D);
   initPredictions(); initScrub(); initC3A(); initControl(); initC2S(); initStrengthLearn(); initCurvesCheck(); initConversion();
-  initChain(); initSR(); initXRD(); initRoles(); initCredits(); initTrack3();
+  initChain(); initSR(); initXRD(); initRoles(); initTrack3();
   observeReveal($('#m3tab-learn'));
   learnReady3 = true; onScroll3();
 }
@@ -7252,26 +7189,6 @@ function renderRoles(){
   applyLang(box);
 }
 function initRoles(){ renderRoles(); onLang(renderRoles); }
-var CREDITS3 = [
-  ['m3-src-clinker','Piece of clinker','Tashkoskim','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Piece_of_clinker.JPG'],
-  ['m3-src-clinkerout','Clinker coming out of Superior Kiln','凰兰时罗','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Clinker_coming_out_of_Superior_Kiln.jpg'],
-  ['m3-src-gypsum','Naturalis Biodiversity Center - Gypsum - mineral','Naturalis Biodiversity Center','CC0','https://commons.wikimedia.org/wiki/File:Naturalis_Biodiversity_Center_-_Gypsum_-_mineral.jpg'],
-  ['m3-src-pour','Concrete pouring for the new Spangdahlem Elementary School (8062807)','U.S. Air Force photo by Airman Sydney Franklin','Public domain','https://commons.wikimedia.org/wiki/File:Concrete_pouring_for_the_new_Spangdahlem_Elementary_School_(8062807).jpg'],
-  ['m3-src-csh','Cement02','Μaria Amenta','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Cement02.JPG'],
-  ['m3-src-ch','Portlandiit põlevkivituhas','Kristjan Leben','CC BY 4.0','https://commons.wikimedia.org/wiki/File:Portlandiit_p%C3%B5levkivituhas.jpg'],
-  ['m3-src-flame','Rotační pec(6)','Chmee2','CC BY-SA 3.0','https://commons.wikimedia.org/wiki/File:Rota%C4%8Dn%C3%AD_pec(6).jpg'],
-  ['m3-src-mill','LDCementFM10MW','LinguisticDemographer at English Wikipedia','Public domain','https://commons.wikimedia.org/wiki/File:LDCementFM10MW.jpg'],
-  ['m3-src-cooler','LDSatelliteCooler','LinguisticDemographer at English Wikipedia','Public domain','https://commons.wikimedia.org/wiki/File:LDSatelliteCooler.jpg'],
-  ['m3-src-pump','Construction site with concrete pump truck','Steve Pivnick, U.S. Air Force','Public domain','https://commons.wikimedia.org/wiki/File:Construction_site_with_concrete_pump_truck.JPG'],
-  ['m3-src-bridge','Construction of Pampanga Delta Bridge & Approaches 05','RamaGaspar','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:Construction_of_Pampanga_Delta_Bridge_%26_Approaches_05.jpg'],
-  ['m3-src-pier','DSC 6656 A long concrete pier with turquoise railings stretches out into calm sea under a dramatic cloud-filled sky','PattayaPatrol','CC BY-SA 4.0','https://commons.wikimedia.org/wiki/File:DSC_6656_A_long_concrete_pier_with_turquoise_railings_stretches_out_into_calm_sea_under_a_dramatic_cloud-filled_sky.jpg'],
-  ['m3-src-xrf','LDAutoXRFPic','LinguisticDemographer at English Wikipedia','Public domain','https://commons.wikimedia.org/wiki/File:LDAutoXRFPic.jpg'],
-  ['m3-src-kiln','Rotary kilns, Sundon cement plant - geograph.org.uk - 2421111','Dylan Moore','CC BY-SA 2.0','https://commons.wikimedia.org/wiki/File:Rotary_kilns,_Sundon_cement_plant_-_geograph.org.uk_-_2421111.jpg']
-];
-function initCredits(){
-  $('#m3-credit-list').innerHTML = CREDITS3.map(function(c){ return '<li><button type="button" class="m3-thumb" data-full="'+c[0]+'" aria-label="'+esc(c[1])+'"><img src="'+img(c[0])+'" alt="" loading="lazy"></button><div><a href="'+c[4]+'" target="_blank" rel="noopener">'+esc(c[1])+'</a><small>'+esc(c[2])+' · '+esc(c[3])+' · Wikimedia Commons</small></div></li>'; }).join('');
-  $('#m3-credit-list').addEventListener('click', function(e){ var b = e.target.closest('[data-full]'); if(!b) return; var c = CREDITS3.filter(function(x){ return x[0]===b.dataset.full; })[0]; dialog('<img src="'+img(c[0])+'" alt="'+esc(c[1])+'" style="width:100%;border-radius:12px;background:#000;max-height:60vh;object-fit:contain"><p style="margin:12px 0 4px;font-weight:600">'+esc(c[1])+'</p><p class="t-2" style="font-size:14px">'+esc(c[2])+' · '+esc(c[3])+' · <a href="'+c[4]+'" target="_blank" rel="noopener">Wikimedia Commons</a></p><div style="display:flex;justify-content:flex-end"><button class="btn btn-secondary" data-close type="button">'+T('ปิด','Close')+'</button></div>'); });
-}
 
 /* =========================================================
    LAB
